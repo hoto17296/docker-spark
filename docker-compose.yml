@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+
+  master:
+    image: hoto17296/spark
+    ports:
+      - 8080:8080
+    command: /spark/bin/spark-class org.apache.spark.deploy.master.Master
+
+  worker:
+    image: hoto17296/spark
+    depends_on:
+      - master
+    links:
+      - master
+    command: /spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://master:7077
