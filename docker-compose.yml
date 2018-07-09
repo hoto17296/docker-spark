@@ -12,6 +12,4 @@ services:
     image: hoto17296/spark
     depends_on:
       - master
-    links:
-      - master
     command: /spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://master:7077
