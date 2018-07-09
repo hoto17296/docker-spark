@@ -8,4 +8,4 @@ RUN wget -q http://apache.mirror.iphh.net/spark/spark-${SPARK_VERSION}/spark-${S
     && mv spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION} /spark \
     && rm spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz
 
-EXPOSE 8080
+EXPOSE 4040 8080 8081

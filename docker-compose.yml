@@ -5,11 +5,14 @@ services:
   master:
     image: hoto17296/spark
     ports:
+      - 4040:4040
       - 8080:8080
-    command: /spark/bin/spark-class org.apache.spark.deploy.master.Master
+    command: /spark/bin/spark-class org.apache.spark.deploy.master.Master --host 0.0.0.0
 
   worker:
     image: hoto17296/spark
     depends_on:
       - master
-    command: /spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://master:7077
+    ports:
+      - 8081-8089:8081
+    command: /spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://master:7077 --host 0.0.0.0
